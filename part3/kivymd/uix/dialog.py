@@ -131,6 +131,314 @@ Builder.load_string(
         height: dp(20)
         padding: dp(20), 0, dp(20), 0
 
+#:import webbrowser webbrowser
+<ThinLabel@MDLabel>:
+    size_hint: 1, None
+    valign: 'middle'
+    height: self.texture_size[1]
+
+<ThinLabelButton@ThinLabel+MDTextButton>:
+    size_hint_y: None
+    valign: 'middle'
+    height: self.texture_size[1]
+
+<ThinBox@BoxLayout>:
+    size_hint_y: None
+    height: self.minimum_height
+    padding: dp(0), dp(0), dp(10), dp(0)
+
+
+<ListMDDialog>
+    title: ""
+    BoxLayout:
+        orientation: 'vertical'
+        padding: dp(15)
+        spacing: dp(10)
+    
+        MDLabel:
+            id: title
+            text: root.title
+            font_style: 'H6'
+            halign: 'left' if not root.device_ios else 'center'
+            valign: 'top'
+            size_hint_y: None
+            text_size: self.width, None
+            height: self.texture_size[1]
+    
+        ScrollView:
+            id: scroll
+            size_hint_y: None
+            height:
+                root.height - (title.height + dp(48)\
+                + sep.height)
+    
+            canvas:
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+                    #source: '{}dialog_in_fade.png'.format(images_path)
+                    source: '{}transparent.png'.format(images_path)
+    
+            MDList:
+                id: list_layout
+                size_hint_y: None
+                height: self.minimum_height
+                spacing: dp(15)
+                canvas.before:
+                    Rectangle:
+                        pos: self.pos
+                        size: self.size
+                    Color:
+                        rgba: [1,0,0,.5]   
+                ThinBox:
+                    ThinLabel:
+                        text: "Address: "
+                    ThinLabelButton:
+                        text: root.address
+                        on_release:
+                            webbrowser.open("http://maps.apple.com/?address="+parse.quote(self.text))
+                ThinBox:
+                    ThinLabel:
+                        text: "Website: "
+                    ThinLabelButton:
+                        text: root.Website
+                        on_release:
+                            webbrowser.open(self.text)
+                ThinBox:
+                    ThinLabel:
+                        text: "Facebook: "
+                    ThinLabelButton:
+                        text: root.Facebook
+                        on_release:
+                            webbrowser.open(self.text)
+                ThinBox:
+                    ThinLabel:
+                        text: "Twitter: "
+                    ThinLabelButton:
+                        text: root.Twitter
+                        on_release:
+                            webbrowser.open(self.text)
+                ThinBox:
+                    ThinLabel:
+                        text: "Season1 Date: "
+                    ThinLabel:
+                        text: root.Season1_date
+                ThinBox:
+                    ThinLabel:
+                        text: "Season1 Hours: "
+                    ThinLabel:
+                        text: root.Season1_hours
+                ThinBox:
+                    ThinLabel:
+                        text: "Season2 Date: "
+                    ThinLabel:
+                        text: root.Season2_date
+                ThinBox:
+                    ThinLabel:
+                        text: "Season2 Hours: "
+                    ThinLabel:
+                        text: root.Season2_hours
+                ThinBox:
+                    ThinLabel:
+                        text: "Season3 Date: "
+                    ThinLabel:
+                        text: root.Season3_date
+                ThinBox:
+                    ThinLabel:
+                        text: "Season3 Hours: "
+                    ThinLabel:
+                        text: root.Season3_hours
+                ThinBox:
+                    ThinLabel:
+                        text: "Season4 Date: "
+                    ThinLabel:
+                        text: root.Season4_date
+                ThinBox:
+                    ThinLabel:
+                        text: "Season4 Hours: "
+                    ThinLabel:
+                        text: root.Season4_hours
+                ThinBox:
+                    ThinLabel:
+                        text: "Credit: "
+                    ThinLabel:
+                        text: root.Credit
+                ThinBox:
+                    ThinLabel:
+                        text: "WIC: "
+                    ThinLabel:
+                        text: root.WIC
+                ThinBox:
+                    ThinLabel:
+                        text: "WICcash: "
+                    ThinLabel:
+                        text: root.WICcash
+                ThinBox:
+                    ThinLabel:
+                        text: "SFMNP: "
+                    ThinLabel:
+                        text: root.SFMNP
+                ThinBox:
+                    ThinLabel:
+                        text: "SNAP: "
+                    ThinLabel:
+                        text: root.SNAP
+                ThinBox:
+                    ThinLabel:
+                        text: "Organic: "
+                    ThinLabel:
+                        text: root.Organic
+                ThinBox:
+                    ThinLabel:
+                        text: "Baked Goods: "
+                    ThinLabel:
+                        text: root.Bakedgoods
+                ThinBox:
+                    ThinLabel:
+                        text: "Cheese: "
+                    ThinLabel:
+                        text: root.Cheese
+                ThinBox:
+                    ThinLabel:
+                        text: "Crafts: "
+                    ThinLabel:
+                        text: root.Crafts
+                ThinBox:
+                    ThinLabel:
+                        text: "Flowers: "
+                    ThinLabel:
+                        text: root.Flowers
+                ThinBox:
+                    ThinLabel:
+                        text: "Eggs: "
+                    ThinLabel:
+                        text: root.Eggs
+                ThinBox:
+                    ThinLabel:
+                        text: "Seafood: "
+                    ThinLabel:
+                        text: root.Seafood
+                ThinBox:
+                    ThinLabel:
+                        text: "Herbs: "
+                    ThinLabel:
+                        text: root.Herbs
+                ThinBox:
+                    ThinLabel:
+                        text: "Vegetables: "
+                    ThinLabel:
+                        text: root.Vegetables
+                ThinBox:
+                    ThinLabel:
+                        text: "Honey: "
+                    ThinLabel:
+                        text: root.Honey
+                ThinBox:
+                    ThinLabel:
+                        text: "Jams: "
+                    ThinLabel:
+                        text: root.Jams
+                ThinBox:
+                    ThinLabel:
+                        text: "Maple: "
+                    ThinLabel:
+                        text: root.Maple
+                ThinBox:
+                    ThinLabel:
+                        text: "Meat: "
+                    ThinLabel:
+                        text: root.Meat
+                ThinBox:
+                    ThinLabel:
+                        text: "Nursery: "
+                    ThinLabel:
+                        text: root.Nursery
+                ThinBox:
+                    ThinLabel:
+                        text: "Nuts: "
+                    ThinLabel:
+                        text: root.Nuts
+                ThinBox:
+                    ThinLabel:
+                        text: "Plants: "
+                    ThinLabel:
+                        text: root.Plants
+                ThinBox:
+                    ThinLabel:
+                        text: "Poultry: "
+                    ThinLabel:
+                        text: root.Poultry
+                ThinBox:
+                    ThinLabel:
+                        text: "Prepared: "
+                    ThinLabel:
+                        text: root.Prepared
+                ThinBox:
+                    ThinLabel:
+                        text: "Soap: "
+                    ThinLabel:
+                        text: root.Soap
+                ThinBox:
+                    ThinLabel:
+                        text: "Trees: "
+                    ThinLabel:
+                        text: root.Trees
+                ThinBox:
+                    ThinLabel:
+                        text: "Wine: "
+                    ThinLabel:
+                        text: root.Wine
+                ThinBox:
+                    ThinLabel:
+                        text: "Coffee: "
+                    ThinLabel:
+                        text: root.Coffee
+                ThinBox:
+                    ThinLabel:
+                        text: "Beans: "
+                    ThinLabel:
+                        text: root.Beans
+                ThinBox:
+                    ThinLabel:
+                        text: "Fruits: "
+                    ThinLabel:
+                        text: root.Fruits
+                ThinBox:
+                    ThinLabel:
+                        text: "Grains: "
+                    ThinLabel:
+                        text: root.Grains
+                ThinBox:
+                    spacing: dp(10)
+                    ThinLabel:
+                        id: juices
+                        text: "Juices: "
+                    ThinLabel:
+                        text: root.Juices
+                ThinBox:
+                    spacing: dp(10)
+                    ThinLabel:
+                        text: "Mushrooms: "
+                    ThinLabel:
+                        text: root.Mushrooms
+                ThinBox:
+                    ThinLabel:
+                        text: "Pet Food: "
+                    ThinLabel:
+                        text: root.PetFood
+                ThinBox:
+                    ThinLabel:
+                        text: "Tofu: "
+                    ThinLabel:
+                        text: root.Tofu
+                ThinBox:
+                    ThinLabel:
+                        text: "Wild Harvested: "
+                    ThinLabel:
+                        text: root.WildHarvested
+        MDSeparator:
+            id: sep
+
 
 <ContentMDDialog>
     orientation: 'vertical'
@@ -287,6 +595,58 @@ class BaseDialog(ThemableBehavior, ModalView):
             instance_content_dialog.remove_widget(
                 instance_content_dialog.ids.sep
             )
+
+class ListMDDialog(BaseDialog):
+    name = StringProperty("Missing data")
+    address = StringProperty("Missing data")
+    Website = StringProperty("Missing data")
+    Facebook = StringProperty("Missing data")
+    Twitter = StringProperty("Missing data")
+    Season1_date = StringProperty("Missing data")
+    Season1_hours = StringProperty("Missing data")
+    Season2_date = StringProperty("Missing data")
+    Season2_hours = StringProperty("Missing data")
+    Season3_date = StringProperty("Missing data")
+    Season3_hours = StringProperty("Missing data")
+    Season4_date = StringProperty("Missing data")
+    Season4_hours = StringProperty("Missing data")
+    Credit = StringProperty("Missing data")
+    WIC = StringProperty("Missing data")
+    WICcash = StringProperty("Missing data")
+    SFMNP = StringProperty("Missing data")
+    SNAP = StringProperty("Missing data")
+    Organic = StringProperty("Missing data")
+    Bakedgoods = StringProperty("Missing data")
+    Cheese = StringProperty("Missing data")
+    Crafts = StringProperty("Missing data")
+    Flowers = StringProperty("Missing data")
+    Eggs = StringProperty("Missing data")
+    Seafood = StringProperty("Missing data")
+    Herbs = StringProperty("Missing data")
+    Vegetables = StringProperty("Missing data")
+    Honey = StringProperty("Missing data")
+    Jams = StringProperty("Missing data")
+    Maple = StringProperty("Missing data")
+    Meat = StringProperty("Missing data")
+    Nursery = StringProperty("Missing data")
+    Nuts = StringProperty("Missing data")
+    Plants = StringProperty("Missing data")
+    Poultry = StringProperty("Missing data")
+    Prepared = StringProperty("Missing data")
+    Soap = StringProperty("Missing data")
+    Trees = StringProperty("Missing data")
+    Wine = StringProperty("Missing data")
+    Coffee = StringProperty("Missing data")
+    Beans = StringProperty("Missing data")
+    Fruits = StringProperty("Missing data")
+    Grains = StringProperty("Missing data")
+    Juices = StringProperty("Missing data")
+    Mushrooms = StringProperty("Missing data")
+    PetFood = StringProperty("Missing data")
+    Tofu = StringProperty("Missing data")
+    WildHarvested = StringProperty("Missing data")
+    background = StringProperty('{}ios_bg_mod.png'.format(images_path))
+
 
 
 class MDInputDialog(BaseDialog):
