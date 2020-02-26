@@ -1,10 +1,12 @@
 from kivymd.app import MDApp
 from farmersmapview import FarmersMapView
 import sqlite3
+from searchpopupmenu import SearchPopupMenu
 
 class MainApp(MDApp):
     connection = None
     cursor = None
+    search_menu = None
 
     def on_start(self):
         # Initialize GPS
@@ -14,5 +16,6 @@ class MainApp(MDApp):
         self.cursor = self.connection.cursor()
 
         # Instantiate SearchPopupMenu
+        self.search_menu = SearchPopupMenu()
 
 MainApp().run()
