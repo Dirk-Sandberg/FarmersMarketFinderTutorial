@@ -132,6 +132,7 @@ Builder.load_string(
         padding: dp(20), 0, dp(20), 0
 
 #:import webbrowser webbrowser
+#:import parse urllib.parse
 <ThinLabel@MDLabel>:
     size_hint: 1, None
     valign: 'middle'
