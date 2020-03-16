@@ -9,6 +9,7 @@ class MainApp(MDApp):
     search_menu = None
 
     def on_start(self):
+        self.theme_cls.primary_palette = 'BlueGray'
         # Initialize GPS
 
         # Connect to database

@@ -2,7 +2,8 @@ from kivymd.uix.dialog import MDInputDialog
 from urllib import parse
 from kivy.network.urlrequest import UrlRequest
 from kivy.app import App
-
+import certifi
+from kivy.clock import Clock
 
 class SearchPopupMenu(MDInputDialog):
     title = 'Search by Address'
@@ -13,6 +14,9 @@ class SearchPopupMenu(MDInputDialog):
         self.size_hint = [.9, .3]
         self.events_callback = self.callback
 
+    def open(self):
+        super().open()
+        Clock.schedule_once(self.set_field_focus, 0.5)
 
     def callback(self, *args):
         address = self.text_field.text
@@ -25,7 +29,7 @@ class SearchPopupMenu(MDInputDialog):
             app_code = f.read()
         address = parse.quote(address)
         url = "https://geocoder.api.here.com/6.2/geocode.json?searchtext=%s&app_id=%s&app_code=%s"%(address, app_id, app_code)
-        UrlRequest(url, on_success=self.success, on_failure=self.failure, on_error=self.error)
+        UrlRequest(url, on_success=self.success, on_failure=self.failure, on_error=self.error, ca_file=certifi.where())
 
     def success(self, urlrequest, result):
         print("Success")
