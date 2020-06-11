@@ -18,6 +18,10 @@ class GpsHelper():
             def callback(permission, results):
                 if all([res for res in results]):
                     print("Got all permissions")
+                    from plyer import gps
+                    gps.configure(on_location=self.update_blinker_position,
+                                  on_status=self.on_auth_status)
+                    gps.start(minTime=1000, minDistance=0)
                 else:
                     print("Did not get all permissions")
 
@@ -25,7 +29,7 @@ class GpsHelper():
                                  Permission.ACCESS_FINE_LOCATION], callback)
 
         # Configure GPS
-        if platform == 'android' or platform == 'ios':
+        if platform == 'ios':
             from plyer import gps
             gps.configure(on_location=self.update_blinker_position,
                           on_status=self.on_auth_status)
